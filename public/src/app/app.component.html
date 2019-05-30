@@ -1,0 +1,17 @@
+<html>
+  <head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  </head>
+  <body>
+    <nav class="navbar navbar-light bg-dark">
+      <h1 style="color:white">Let's eat</h1>
+    </nav>
+    <nav class="navbar navbar-light bg-light">
+        <div style="display:inline-block">
+            <button [routerLink]="['/']" class="btn btn-primary">Home</button>
+          <button [routerLink]="['/restaurants/new']" class="btn btn-success">New restaurant</button>
+        </div>
+      </nav>
+      <router-outlet></router-outlet>
+  </body>
+</html>

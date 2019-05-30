@@ -1,0 +1,68 @@
+<html>
+  <head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  </head>
+  <body>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-6">
+            <h2>Write a review for {{restaurant.name}}</h2>
+            <form (submit) = "onSubmit(restaurant._id)">
+                <p>Your name: <input class="form-control" type="text" name ="review.customer_name"
+                 required
+                 minlength="3"
+                 [(ngModel)] = "review.customer_name"
+                 #name = "ngModel"
+                 />
+                </p>
+                <div *ngIf="name.invalid" class="alert alert-danger">
+                <div *ngIf="name.errors.required">
+                    Name is required.
+                  </div>
+                  <div *ngIf="name.errors.minlength">
+                      Name must contain at least three characters!
+                    </div>
+                  </div>
+                  <p>Stars: 
+                      <select name="review.stars" 
+                      required
+                      [(ngModel)] = "review.stars"
+                      #stars = "ngModel"
+                      >
+                          <option value="5">5 stars</option>
+                          <option value="4">4 stars</option>
+                          <option value="3">3 stars</option>
+                          <option value="2">2 stars</option>
+                          <option value="1">1 star</option>
+                        </select><br>
+                    </p>
+                    <div *ngIf="stars.invalid" class="alert alert-danger">
+                        <div *ngIf="stars.errors.required">
+                          Please choose a rating from 1-5.
+                        </div>
+                      </div>
+              <p>Your review: <input class="form-control" type="text" name ="review.description" 
+                required
+                minlength="3"
+                [(ngModel)] = "review.description"
+                #description = "ngModel"
+                />
+              </p>
+              <div *ngIf="description .invalid" class="alert alert-danger">
+                <div *ngIf="description .errors.required">
+                  Description is required.
+                </div>
+                <div *ngIf="description .errors.minlength">
+                  Description must contain at least three characters!
+                </div>
+              </div>
+              <input class="btn btn-primary" type="Submit" value = "Register">
+            </form><br>
+            <button [routerLink]="['/restaurants', restaurant._id]" class="btn btn-danger">Cancel</button>
+          </div>
+       </div>
+      </div>
+    </body>
+</html>
+
+  

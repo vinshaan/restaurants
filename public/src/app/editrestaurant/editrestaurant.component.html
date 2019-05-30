@@ -1,0 +1,50 @@
+<html>
+  <head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  </head>
+  <body>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-6">
+            <h2>Edit a restaurant</h2>
+            <form #editForm = "ngForm" (ngSubmit) = "onSubmit(editForm, editRestaurant._id)">
+                <p>Restaurant name: <input class="form-control" type="text" name ="name" value = "editRestaurant.name"
+                 required
+                 minlength="3"
+                 [(ngModel)] = "editRestaurant.name"
+                 #name = "ngModel"
+                 />
+                </p>
+            
+                <div *ngIf="name.invalid" class="alert alert-danger">
+                <div *ngIf="name.errors.required">
+                    Restaurant name is required.
+                  </div>
+                  <div *ngIf="name.errors.minlength">
+                      Restaurant name must contain at least three characters!
+                    </div>
+                  </div>
+              <p>Cuisine: <input class="form-control" type="text" name ="cuisine" value = "editRestaurant.cuisine"
+                required
+                minlength="3"
+                [(ngModel)] = "editRestaurant.cuisine"
+                #cuisine = "ngModel"
+                />
+              </p>
+              <div *ngIf="cuisine.invalid" class="alert alert-danger">
+                <div *ngIf="cuisine.errors.required">
+                  Cuisine is required.
+                </div>
+                <div *ngIf="cuisine.errors.minlength">
+                  Cuisine must contain at least three characters!
+                </div>
+              </div>
+              <input class="btn btn-primary" type="Submit" value = "Edit">
+            </form><br>
+          </div>
+       </div>
+      </div>
+    </body>
+</html>
+
+  
